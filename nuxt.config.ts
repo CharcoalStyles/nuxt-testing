@@ -27,12 +27,13 @@ export default defineNuxtConfig({
   modules: ["@pinia/nuxt"],
   nitro: {
     prerender: {
-      routes: ["/ssg/"],
+      routes: ["/ssg/form", "/ssg/ramp"],
     },
   },
   plugins: ["~/plugins/hub24ds.client"],
   routeRules: {
-    "/ssg": { prerender: true },
+    "/ssg/form": { prerender: true },
+    "/ssg/ramp": { prerender: true },
   },
   typescript: {
     typeCheck: true,
