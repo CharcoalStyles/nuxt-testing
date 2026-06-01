@@ -1,14 +1,19 @@
 <template>
-  <div>
+  <div class="app-layout">
     <Header />
-    <div class="content">
-      <slot />
-    </div>
+
+    <main class="main-content">
+      <!-- NuxtPage/ slot for child page views -->
+      <slot /> 
+    </main>
+
+    <Footer />
   </div>
 </template>
 
 <script setup lang="ts">
 import Header from "../components/header.vue";
+import Footer from "../components/footer.vue";
 </script>
 
 <style>
@@ -40,14 +45,20 @@ html {
   box-sizing: border-box;
   margin: 0;
 }
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  /* Use dvh (dynamic viewport height) to prevent mobile browser address bar layout jumps */
+  min-height: 100dvh; 
+}
 
-.content {
-  max-width: 42em;
+.main-content {
+  /* Tells the content area to consume all available empty space */
+  flex-grow: 1; 
+  max-width: 1000px;
+  min-width: 500px;
   margin: 0 auto;
-  padding: 1em;
-  display: block;
-  line-height: 1.5;
-  font-size: 1.1em;
+  margin-top: 1em;
 }
 
 .page-enter-active,
